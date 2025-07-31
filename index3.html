@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Glaze & Joy</title>
+    <meta name="description" content="Contáctanos para pedidos especiales, eventos o cualquier consulta sobre nuestros productos.">
+    <link rel="icon" href="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Estilos para el menú toggle */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            padding: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+                z-index: 1000;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            
+            .main-nav.active {
+                left: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .main-nav li {
+                margin: 15px 0;
+            }
+            
+            .header-icons {
+                margin-left: auto;
+            }
+        }
+
+        .contact-hero {
+            background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .contact-section {
+            padding: 80px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        
+        .contact-info {
+            margin-bottom: 40px;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .contact-info h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-accent);
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+
+        .contact-text h3 {
+            margin-bottom: 5px;
+            color: var(--color-dark);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--color-accent);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--color-primary);
+        }
+        
+        .map-container {
+            margin-top: 80px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navegación -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" alt="Glaze y Joy - Pastelería">
+                </a>
+            </div>
+            
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index1.html">Productos</a></li>
+                    <li><a href="index2.html">Nosotros</a></li>
+                    <li><a href="index3.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="search-container">
+                    <form action="buscar.html" method="get">
+                        <input type="text" placeholder="Buscar productos..." name="q" id="search-input">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <a href="#" id="login-btn"><i class="fas fa-user"></i></a>
+                <a href="carrito.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero/Banner de Contacto -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contáctanos</h1>
+            <p>Estamos aquí para responder tus preguntas y recibir tus pedidos especiales</p>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Información de Contacto</h2>
+                    <p>¿Tienes alguna pregunta sobre nuestros productos? ¿Quieres hacer un pedido especial para un evento? No dudes en contactarnos, nuestro equipo estará encantado de ayudarte.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Dirección</h3>
+                                <p> Av. Livertadores 123, Ticapampa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Teléfono</h3>
+                                <p>51 958 909 846</p>
+                                <p>+51 987 654 321</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Email</h3>
+                                <p>glazzeyjoygmail.com</p>
+                                <p>pedidos@glazeyjoy.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Horario de atención</h3>
+                                <p>Lunes a Viernes: 9:00 am - 7:00 pm</p>
+                                <p>Sábados: 9:00 am - 5:00 pm</p>
+                                <p>Domingos: Cerrado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Envíanos un mensaje</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono (opcional)</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="" disabled selected>Selecciona un asunto</option>
+                                <option value="consulta">Consulta general</option>
+                                <option value="pedido">Pedido especial</option>
+                                <option value="evento">Evento corporativo</option>
+                                <option value="reclamo">Reclamo o sugerencia</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <h2>Nuestra ubicación</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.965215416949!2d-77.595377!3d-9.717138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7a8b8b8b8b8b9%3A0x9a9a9a9a9a9a9a9a!2sTicapampa%2C%20Recuay!5e0!3m2!1sen!2spe!4v1626360000000!5m2!1sen!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- ... (pega el footer del archivo principal) ... -->
+    </footer>
+
+    <div class="whatsapp-float">
+        <a href="#" id="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">¡Escríbenos!</span>
+        </a>
+    </div>
+
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content whatsapp-form">
+            <span class="close-modal">&times;</span>
+            <h2>Contáctanos por WhatsApp</h2>
+            <form id="whatsapp-form">
+                <div class="form-group">
+                    <label for="whatsapp-name">Nombre:</label>
+                    <input type="text" id="whatsapp-name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-phone">Teléfono:</label>
+                    <input type="tel" id="whatsapp-phone" placeholder="Número de teléfono" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-message">Mensaje:</label>
+                    <textarea id="whatsapp-message" rows="4" placeholder="Hola, me gustaría información sobre..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-product">Producto de interés (opcional):</label>
+                    <select id="whatsapp-product">
+                        <option value="">-- Selecciona un producto --</option>
+                        <option value="Helado de Lúcuma">Helado de Lúcuma</option>
+                        <option value="Torta de Lúcuma">Torta de Lúcuma</option>
+                        <option value="Cheesecake de Lúcuma">Cheesecake de Lúcuma</option>
+                    </select>
+                </div>
+                <button type="submit" class="whatsapp-send-btn">
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Estilos premium para el botón de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00fa5c, #128C7E);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 20px #ff9898;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border: 3px solid white;
+        }
+        
+        .whatsapp-float a {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 80px;
+            background: white;
+            color: #128C7E;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+        
+        .whatsapp-form {
+            max-width: 500px;
+            width: 90%;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-form h2 {
+            color: #128C7E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #128C7E;
+            outline: none;
+        }
+        
+        .whatsapp-send-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00fa5c, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-send-btn:hover {
+            background: linear-gradient(135deg, #00e651, #0d7a6b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(18, 140, 126, 0.3);
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .whatsapp-form {
+                padding: 20px;
+            }
+            
+            .whatsapp-form h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+
+    <!-- Script para el menú toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                
+                // Cambiar el icono entre hamburguesa y X
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Cerrar el menú al hacer clic en un enlace (para móviles)
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        menuToggle.classList.remove('active');
+                        mainNav.classList.remove('active');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                    }
+                });
+            });
+            
+            // WhatsApp modal functionality
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            const whatsappModal = document.getElementById('whatsapp-modal');
+            const closeModal = document.querySelector('.close-modal');
+            
+            whatsappBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                whatsappModal.style.display = 'flex';
+            });
+            
+            closeModal.addEventListener('click', function() {
+                whatsappModal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === whatsappModal) {
+                    whatsappModal.style.display = 'none';
+                }
+            });
+            
+            // Form submission (example)
+            const whatsappForm = document.getElementById('whatsapp-form');
+            whatsappForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Aquí iría la lógica para enviar el mensaje por WhatsApp
+                alert('Mensaje enviado (simulación)');
+                whatsappModal.style.display = 'none';
+            });
+            
+            // Script adicional para el formulario de contacto
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>

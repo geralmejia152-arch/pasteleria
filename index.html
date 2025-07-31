@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glaze & Joy | Pastelería</title>
+    <meta name="description" content="Deliciosos postres y helados elaborados con delicias peruanas de la mejor calidad.">
+    <link rel="icon" href="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos para el menú toggle */
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            padding: 10px;
+            margin-left: auto;
+        }
+        
+        .main-nav {
+            transition: all 0.3s ease;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-nav li {
+            margin-left: 20px;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: #ff6b6b;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                z-index: 1000;
+            }
+            
+            .main-nav.active {
+                max-height: 500px;
+                padding: 20px 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+            }
+            
+            .main-nav li {
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .header-icons {
+                margin-left: auto;
+            }
+            
+            .logo {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" alt="Glaze y Joy - Pastelería">
+                </a>
+                <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+                    <span id="toggleIcon">☰</span>
+                </button>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index1.html">Productos</a></li>
+                    <li><a href="index2.html">Nosotros</a></li>
+                    <li><a href="index3.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="search-container">
+                    <form action="buscar.html" method="get">
+                        <input type="text" placeholder="Buscar productos..." name="q" id="search-input">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <a href="#" id="login-btn"><i class="fas fa-user"></i></a>
+                <a href="carrito.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('navbarToggle');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const mainNav = document.getElementById('mainNav');
+            
+            toggleButton.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                const isActive = mainNav.classList.contains('active');
+                
+                // Cambiar el icono del botón con animación
+                if (isActive) {
+                    toggleIcon.textContent = '✕';
+                    toggleIcon.style.transform = 'rotate(90deg)';
+                } else {
+                    toggleIcon.textContent = '☰';
+                    toggleIcon.style.transform = 'rotate(0deg)';
+                }
+                
+                // Agregar animación al icono
+                toggleIcon.style.transition = 'transform 0.3s ease';
+            });
+            
+            // Cerrar el menú al hacer clic en un enlace (solo en móviles)
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        toggleIcon.textContent = '☰';
+                        toggleIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+            
+            // Cerrar el menú al redimensionar la pantalla si pasa el breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    mainNav.classList.remove('active');
+                    toggleIcon.textContent = '☰';
+                    toggleIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    </script>
+
+    <!-- Resto del código HTML permanece igual -->
+    <!-- Hero/Banner de la categoría -->
+    <section class="category-hero" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="container">
+            <h1>Glaze y Joy</h1>
+            <p>Disfruta del auténtico sabor de nuestros deliciosos postres artesanales</p>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filtros y ordenamiento -->
+            <div class="product-filters">
+                <div class="filter-section">
+                    <span>Ordenar por:</span>
+                    <select id="sort-by">
+                        <option value="popular">Más populares</option>
+                        <option value="price-asc">Precio: menor a mayor</option>
+                        <option value="price-desc">Precio: mayor a menor</option>
+                        <option value="name">Nombre</option>
+                    </select>
+                </div>
+                <div class="filter-section">
+                    <span>Mostrar:</span>
+                    <select id="show-items">
+                        <option value="6">6 productos</option>
+                        <option value="12">12 productos</option>
+                        <option value="24">24 productos</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Lista de productos -->
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1576186726580-a816e8b12896?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Helado de Lúcuma">
+                        <div class="product-badge">Nuevo</div>
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Helado de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 12.00</span>
+                            <span class="old-price">S/ 15.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Torta de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Torta de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 45.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1519869325930-281384150729?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Cheesecake de Lúcuma">
+                        <div class="product-badge">Más vendido</div>
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cheesecake de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 38.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Cupcakes de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cupcakes de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 8.00 c/u</span>
+                            <span class="old-price">S/ 10.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Galletas de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Galletas de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 25.00 docena</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Mousse de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Mousse de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 18.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Pionono de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Pionono de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 32.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Trufas de Lúcuma">
+                        <div class="product-badge">Nuevo</div>
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Trufas de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 28.00 docena</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Alfajores de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Alfajores de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 22.00 docena</span>
+                            <span class="old-price">S/ 25.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 10 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Postre de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Postre de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 20.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 11 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Pie de Lúcuma">
+                        <div class="product-badge">Oferta</div>
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Pie de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 40.00</span>
+                            <span class="old-price">S/ 48.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 12 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Brownie de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Brownie de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 15.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="prev"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#" class="next"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <section class="category-description">
+        <div class="container">
+            <h2>Glaze y Joy</h2>
+            <p>"Una pastelería es un establecimiento encantador donde se elaboran y venden todo tipo de dulces y postres deliciosos. Desde pasteles decorados con crema y frutas hasta galletas, cupcakes, macarons y tartas, cada producto es una obra maestra de sabor y creatividad. El aroma a azúcar, vainilla y chocolate fresco invade el lugar, mientras los clientes admiran los coloridos escaparates llenos de tentaciones. Muchas pastelerías también ofrecen café o té para acompañar los postres, creando un ambiente acogedor ideal para disfrutar de un momento dulce."</p>
+            <p>Nuestros productos son elaborados artesanalmente, sin conservantes ni colorantes artificiales, manteniendo todo el sabor y propiedades de este superalimento peruano. Cada bocado es una experiencia de sabores auténticos y texturas inigualables.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Nuestra pastelería</h4>
+                    <ul>
+                        <li><a href="index2.html">Nosotros</a></li>
+                        <li><a href="calidad.html">Compromiso de calidad</a></li>
+                        <li><a href="blog.html">Blog dulce</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+                        <li><a href="index3.html">Envíos y entregas</a></li>
+                        <li><a href="devoluciones.html">Devoluciones</a></li>
+                        <li><a href="sucursales.html">Nuestras sucursales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Livertadores 123, Ticapampa</li>
+                        <li><i class="fas fa-phone"></i> +51 958 908 426</li>
+                        <li><i class="fas fa-envelope"></i> glazzejoy@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Sábado: 9am - 8pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <h4>Métodos de pago</h4>
+                    <div class="payment-methods">
+                        <img src="https://via.placeholder.com/40x25?text=VISA" alt="Visa">
+                        <img src="https://via.placeholder.com/40x25?text=MC" alt="Mastercard">
+                        <img src="https://via.placeholder.com/40x25?text=PP" alt="PayPal">
+                        <img src="https://via.placeholder.com/40x25?text=YP" alt="Yape">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Glaze y Joy - Pastelería Artesanal. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="privacidad.html">Política de privacidad</a>
+                    <a href="terminos.html">Términos y condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" id="show-register">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Registro</h2>
+            <form id="register-form">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <input type="password" placeholder="Confirmar contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="whatsapp-float">
+        <a href="#" id="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">¡Escríbenos!</span>
+        </a>
+    </div>
+
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content whatsapp-form">
+            <span class="close-modal">&times;</span>
+            <h2>Contáctanos por WhatsApp</h2>
+            <form id="whatsapp-form">
+                <div class="form-group">
+                    <label for="whatsapp-name">Nombre:</label>
+                    <input type="text" id="whatsapp-name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-phone">Teléfono:</label>
+                    <input type="tel" id="whatsapp-phone" placeholder="Número de teléfono" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-message">Mensaje:</label>
+                    <textarea id="whatsapp-message" rows="4" placeholder="Hola, me gustaría información sobre..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-product">Producto de interés (opcional):</label>
+                    <select id="whatsapp-product">
+                        <option value="">-- Selecciona un producto --</option>
+                        <option value="Helado de Lúcuma">Helado de Lúcuma</option>
+                        <option value="Torta de Lúcuma">Torta de Lúcuma</option>
+                        <option value="Cheesecake de Lúcuma">Cheesecake de Lúcuma</option>
+                    </select>
+                </div>
+                <button type="submit" class="whatsapp-send-btn">
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Estilos premium para el botón de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00fa5c, #128C7E);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 20px #ff9898;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border: 3px solid white;
+        }
+        
+        .whatsapp-float a {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 80px;
+            background: white;
+            color: #128C7E;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+        
+        .whatsapp-form {
+            max-width: 500px;
+            width: 90%;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-form h2 {
+            color: #128C7E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #128C7E;
+            outline: none;
+        }
+        
+        .whatsapp-send-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00fa5c, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-send-btn:hover {
+            background: linear-gradient(135deg, #00e651, #0d7a6b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(18, 140, 126, 0.3);
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .whatsapp-form {
+                padding: 20px;
+            }
+            
+            .whatsapp-form h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Búsqueda
+            const searchForm = document.querySelector('.search-container form');
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const query = document.getElementById('search-input').value;
+                if(query.trim()) {
+                    alert(`Buscando: ${query}`);
+                    // window.location.href = `buscar.html?q=${encodeURIComponent(query)}`;
+                }
+            });
+            
+            // Login/Registro
+            const loginBtn = document.getElementById('login-btn');
+            const loginModal = document.getElementById('login-modal');
+            const registerModal = document.getElementById('register-modal');
+            const showRegister = document.getElementById('show-register');
+            const closeModals = document.querySelectorAll('.close-modal');
+            
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'block';
+            });
+            
+            showRegister.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'block';
+            });
+            
+            closeModals.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    loginModal.style.display = 'none';
+                    registerModal.style.display = 'none';
+                    whatsappModal.style.display = 'none';
+                });
+            });
+            
+            window.addEventListener('click', function(e) {
+                if(e.target === loginModal) loginModal.style.display = 'none';
+                if(e.target === registerModal) registerModal.style.display = 'none';
+                if(e.target === whatsappModal) whatsappModal.style.display = 'none';
+            });
+            
+            // Formularios de login/registro
+            document.getElementById('login-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Inicio de sesión exitoso (simulado)');
+                loginModal.style.display = 'none';
+            });
+            
+            document.getElementById('register-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Registro exitoso (simulado)');
+                registerModal.style.display = 'none';
+            });
+            
+            // Carrito
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h3').textContent;
+                    const productPrice = productCard.querySelector('.price').textContent;
+                    
+                    // Simular añadir al carrito
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push({name: productName, price: productPrice});
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    alert(`¡${productName} añadido al carrito!\nPrecio: ${productPrice}`);
+                });
+            });
+            
+            // Vista rápida
+            document.querySelectorAll('.quick-view').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h3').textContent;
+                    const productPrice = productCard.querySelector('.price').textContent;
+                    
+                    alert(`Vista rápida: ${productName}\nPrecio: ${productPrice}\n\nDescripción detallada del producto...`);
+                });
+            });
+            
+            // Ordenar productos
+            document.getElementById('sort-by').addEventListener('change', function() {
+                const sortBy = this.value;
+                const productsContainer = document.querySelector('.product-grid');
+                const products = Array.from(productsContainer.children);
+                
+                products.sort((a, b) => {
+                    const priceA = parseFloat(a.querySelector('.price').textContent.replace('S/ ', ''));
+                    const priceB = parseFloat(b.querySelector('.price').textContent.replace('S/ ', ''));
+                    const nameA = a.querySelector('h3').textContent.toLowerCase();
+                    const nameB = b.querySelector('h3').textContent.toLowerCase();
+                    
+                    switch(sortBy) {
+                        case 'price-asc': return priceA - priceB;
+                        case 'price-desc': return priceB - priceA;
+                        case 'name': return nameA.localeCompare(nameB);
+                        default: return 0;
+                    }
+                });
+                
+                products.forEach(product => productsContainer.appendChild(product));
+            });
+            
+            // Mostrar cantidad de productos
+            document.getElementById('show-items').addEventListener('change', function() {
+                const showCount = parseInt(this.value);
+                const allProducts = document.querySelectorAll('.product-card');
+                
+                allProducts.forEach((product, index) => {
+                    product.style.display = index < showCount ? 'block' : 'none';
+                });
+                
+                // Actualizar paginación (simulado)
+                const pageCount = Math.ceil(allProducts.length / showCount);
+                updatePagination(pageCount);
+            });
+            
+            // Paginación
+            function updatePagination(pageCount) {
+                const pagination = document.querySelector('.pagination');
+                pagination.innerHTML = '';
+                
+                // Botón anterior
+                pagination.innerHTML += '<a href="#" class="prev"><i class="fas fa-chevron-left"></i></a>';
+                
+                // Números de página
+                for(let i = 1; i <= pageCount; i++) {
+                    pagination.innerHTML += `<a href="#" ${i === 1 ? 'class="active"' : ''}>${i}</a>`;
+                }
+                
+                // Botón siguiente
+                pagination.innerHTML += '<a href="#" class="next"><i class="fas fa-chevron-right"></i></a>';
+                
+                // Event listeners para los nuevos botones
+                document.querySelectorAll('.pagination a:not(.prev):not(.next)').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if(this.classList.contains('active')) return;
+                        
+                        document.querySelector('.pagination a.active').classList.remove('active');
+                        this.classList.add('active');
+                        
+                        const page = parseInt(this.textContent);
+                        const showCount = parseInt(document.getElementById('show-items').value);
+                        const allProducts = document.querySelectorAll('.product-card');
+                        
+                        allProducts.forEach((product, index) => {
+                            const start = (page - 1) * showCount;
+                            const end = start + showCount;
+                            product.style.display = (index >= start && index < end) ? 'block' : 'none';
+                        });
+                    });
+                });
+                
+                // Botones anterior/siguiente
+                document.querySelector('.pagination .prev').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const active = document.querySelector('.pagination a.active');
+                    const prev = active.previousElementSibling;
+                    
+                    if(prev && !prev.classList.contains('prev')) {
+                        active.classList.remove('active');
+                        prev.classList.add('active');
+                        prev.click();
+                    }
+                });
+                
+                document.querySelector('.pagination .next').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const active = document.querySelector('.pagination a.active');
+                    const next = active.nextElementSibling;
+                    
+                    if(next && !next.classList.contains('next')) {
+                        active.classList.remove('active');
+                        next.classList.add('active');
+                        next.click();
+                    }
+                });
+            }
+            
+            // Inicializar paginación
+            updatePagination(2);
+            
+            // WhatsApp con formulario
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            const whatsappModal = document.getElementById('whatsapp-modal');
+            const whatsappForm = document.getElementById('whatsapp-form');
+            
+            whatsappBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                whatsappModal.style.display = 'block';
+            });
+            
+            // Enviar formulario de WhatsApp
+            whatsappForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('whatsapp-name').value;
+                const phone = document.getElementById('whatsapp-phone').value;
+                const message = document.getElementById('whatsapp-message').value;
+                const product = document.getElementById('whatsapp-product').value;
+                
+                // Validar número de teléfono (eliminar espacios y caracteres no numéricos)
+                const cleanPhone = phone.replace(/\D/g, '');
+                
+                // Construir mensaje final
+                let finalMessage = `Hola Glaze & Joy, soy ${name}. ${message}`;
+                
+                if(product) {
+                    finalMessage += `\n\nEstoy interesado en: ${product}`;
+                }
+                
+                // Codificar el mensaje para URL
+                const encodedMessage = encodeURIComponent(finalMessage);
+                
+                // Abrir WhatsApp con el mensaje
+                window.open(`https://wa.me/51958908426?text=${encodedMessage}`, '_blank');
+                
+                // Cerrar el modal
+                whatsappModal.style.display = 'none';
+                
+                // Opcional: resetear el formulario
+                whatsappForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

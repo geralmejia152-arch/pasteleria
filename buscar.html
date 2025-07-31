@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Búsqueda | Glaze & Joy</title>
+    <meta name="description" content="Resultados de búsqueda para tus productos favoritos.">
+    <link rel="icon" href="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Copia todos los estilos del archivo principal aquí */
+        /* ... (pega todos los estilos CSS del archivo principal) ... */
+        
+        /* Estilos adicionales específicos para búsqueda */
+        .search-hero {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .search-container-large {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        
+        .search-container-large input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .search-container-large button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        
+        .search-results {
+            padding: 50px 0;
+        }
+        
+        .search-meta {
+            margin-bottom: 30px;
+            color: var(--color-text);
+        }
+        
+        .search-meta strong {
+            color: var(--color-dark);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .no-results i {
+            font-size: 5rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .no-results h3 {
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+        
+        .suggestions {
+            margin-top: 30px;
+        }
+        
+        .suggestions h4 {
+            margin-bottom: 15px;
+            color: var(--color-dark);
+
+        }
+        
+        .suggestion-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .suggestion-list a {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: var(--color-light);
+            border-radius: 20px;
+            color: var(--color-dark);
+            transition: all 0.3s;
+        }
+        
+        .suggestion-list a:hover {
+            background-color: var(--color-accent);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navegación (igual que en el principal) -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" alt="Glaze y Joy - Pastelería">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index1.html">Productos</a></li>
+                    <li><a href="index2.html">Nosotros</a></li>
+                    <li><a href="index3.html">Contacto</a></li>
+                </ul>
+
+            </nav>
+            <div class="header-icons">
+                <div class="search-container">
+                    <form action="buscar.html" method="get">
+                        <input type="text" placeholder="Buscar productos..." name="q" id="search-input">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <a href="#" id="login-btn"><i class="fas fa-user"></i></a>
+                <a href="carrito.html"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero/Banner de Búsqueda -->
+    <section class="search-hero">
+        <div class="container">
+            <h1>Buscar Productos</h1>
+            <div class="search-container-large">
+                <form action="buscar.html" method="get">
+                    <input type="text" placeholder="¿Qué estás buscando hoy?" name="q" value="lúcuma">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados de Búsqueda -->
+    <section class="search-results">
+        <div class="container">
+            <div class="search-meta">
+                <p>Mostrando resultados para: <strong>"lúcuma"</strong> - <strong>4</strong> productos encontrados</p>
+            </div>
+            
+            <div class="search-filters">
+                <div class="filter-btn active">Todos</div>
+                <div class="filter-btn">Helados</div>
+
+                <div class="filter-btn">Tortas</div>
+                <div class="filter-btn">Postres</div>
+                <div class="filter-btn">Precio: Menor a mayor</div>
+                <div class="filter-btn">Precio: Mayor a menor</div>
+            </div>
+            
+            <!-- Lista de productos (igual que en el principal) -->
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1576186726580-a816e8b12896?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Helado de Lúcuma">
+                        <div class="product-badge">Nuevo</div>
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Helado de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 12.00</span>
+                            <span class="old-price">S/ 15.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Torta de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Torta de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 45.00</span>
+                        </div>
+
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1519869325930-281384150729?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Cheesecake de Lúcuma">
+                        <div class="product-badge">Más vendido</div>
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cheesecake de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 38.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Cupcakes de Lúcuma">
+                        <button class="quick-view">Vista rápida</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cupcakes de Lúcuma</h3>
+                        <div class="product-price">
+                            <span class="price">S/ 8.00 c/u</span>
+                            <span class="old-price">S/ 10.00</span>
+                        </div>
+                        <button class="add-to-cart">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer (igual que en el principal) -->
+    <footer class="footer">
+        <!-- ... (pega el footer del archivo principal) ... -->
+    </footer>
+
+    <!-- Scripts (igual que en el principal) -->
+    <script>
+        // ... (pega los scripts del archivo principal) ...
+        
+        // Script adicional para la búsqueda
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Aquí iría la lógica para filtrar los resultados
+            });
+        });
+        
+        // Obtener el término de búsqueda de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('q');
+        if (searchTerm) {
+            document.querySelector('.search-container-large input').value = searchTerm;
+            document.querySelector('.search-meta strong').textContent = `"${searchTerm}"`;
+        }
+    </script>
+</body>
+</html>

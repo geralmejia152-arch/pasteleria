@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Glaze & Joy</title>
+    <meta name="description" content="Conoce nuestra historia y pasión por la pastelería artesanal con ingredientes peruanos.">
+    <link rel="icon" href="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variables de color */
+        :root {
+            --color-primary: #ff6b6b;
+            --color-secondary: #f7f7f7;
+            --color-accent: #ff9e9e;
+            --color-dark: #333;
+            --color-text: #666;
+            --color-light: #fff;
+        }
+
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-dark);
+            padding-top: 80px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: var(--color-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: relative;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        /* Menu Toggle Styles */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-dark);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:before,
+        .hamburger:after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-dark);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:before {
+            top: -8px;
+        }
+
+        .hamburger:after {
+            top: 8px;
+        }
+
+        .menu-toggle.active .hamburger {
+            background-color: transparent;
+        }
+
+        .menu-toggle.active .hamburger:before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .menu-toggle.active .hamburger:after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover:after,
+        .main-nav a.active:after {
+            width: 100%;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--color-primary);
+        }
+
+        /* Header Icons */
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .search-container input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 180px;
+        }
+
+        .search-container input:focus {
+            border-color: var(--color-primary);
+            width: 220px;
+        }
+
+        .search-container button {
+            background: none;
+            border: none;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--color-dark);
+        }
+
+        .header-icons a {
+            color: var(--color-dark);
+            margin-left: 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .header-icons a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .search-container input {
+                width: 150px;
+            }
+            
+            .search-container input:focus {
+                width: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--color-light);
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                flex-direction: column;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .main-nav.active {
+                right: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .main-nav li {
+                margin: 0 0 20px 0;
+            }
+            
+            .main-nav a {
+                font-size: 1.1rem;
+                padding: 8px 0;
+            }
+            
+            .header-icons {
+                margin-left: auto;
+            }
+            
+            .search-container {
+                display: none;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+            
+            .header .container {
+                padding: 10px 15px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-nav {
+                width: 100%;
+            }
+        }
+
+        /* Hero Section */
+        .category-hero {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .category-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .category-hero .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .category-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .category-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Values Section */
+        .values-section {
+            background-color: var(--color-secondary);
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-accent);
+        }
+        
+        .section-title p {
+            color: var(--color-text);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-card {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover .team-image {
+            border-color: var(--color-accent);
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-info h3 {
+            margin-bottom: 5px;
+            color: var(--color-dark);
+            font-size: 1.3rem;
+        }
+        
+        .team-info p {
+            color: var(--color-text);
+            font-style: italic;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00fa5c, #128C7E);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 20px rgba(255, 152, 152, 0.5);
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border: 3px solid white;
+        }
+        
+        .whatsapp-float a {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 80px;
+            background: white;
+            color: #128C7E;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            position: relative;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        /* WhatsApp Form Styles */
+        .whatsapp-form h2 {
+            color: #128C7E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #128C7E;
+            outline: none;
+        }
+        
+        .whatsapp-send-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00fa5c, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .whatsapp-send-btn:hover {
+            background: linear-gradient(135deg, #00e651, #0d7a6b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(18, 140, 126, 0.3);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: var(--color-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            color: var(--color-light);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--color-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .category-hero {
+                height: 300px;
+            }
+            
+            .category-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .whatsapp-form {
+                padding: 20px;
+            }
+            
+            .whatsapp-form h2 {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .category-hero {
+                height: 250px;
+            }
+            
+            .category-hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .category-hero p {
+                font-size: 1rem;
+            }
+            
+            .about-text h2,
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   <header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Captura_de_pantalla_2025-07-15_121026-removebg-preview.png" alt="Glaze y Joy - Pastelería">
+            </a>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+            <span class="hamburger"></span>
+        </button>
+        
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index1.html">Productos</a></li>
+                <li><a href="index2.html" class="active">Nosotros</a></li>
+                <li><a href="index3.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <div class="search-container">
+                <form action="buscar.html" method="get">
+                    <input type="text" placeholder="Buscar productos..." name="q" id="search-input">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <a href="#" id="login-btn"><i class="fas fa-user"></i></a>
+            <a href="carrito.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+</header>
+
+    <!-- Hero/Banner de Nosotros -->
+    <section class="category-hero" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="container">
+            <h1>Nuestra Historia</h1>
+            <p>Conoce la pasión y dedicación que hay detrás de cada uno de nuestros postres</p>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Glaze & Joy: Dulces momentos desde 2024</h2>
+                    <p>Todo comenzó en un pequeño local en el corazón de Ticapampa, donde nuestra fundadora, Geraldine Pilar, decidió compartir su pasión por la pastelería con el mundo. Con recetas heredadas de su abuela y un toque de innovación, creó los primeros postres que hoy son los favoritos de nuestros clientes.</p>
+                    <p>Lo que nos diferencia es nuestro compromiso con ingredientes 100% naturales y de origen peruano. Cada producto que elaboramos lleva una parte de nuestra cultura y tradición, combinada con técnicas modernas de repostería.</p>
+                    <p>Hoy, después de más de una década, seguimos manteniendo ese espíritu artesanal que nos caracteriza, pero con una visión más amplia: llevar el sabor auténtico de la pastelería peruana a cada hogar.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Nuestro local">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Valores -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Valores</h2>
+                <p>Principios que guían nuestro trabajo cada día</p>
+            </div>
+            
+            <div class="values-grid">
+                <!-- Valor 1 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Pasión</h3>
+                    <p>Amamos lo que hacemos y eso se refleja en cada uno de nuestros productos. La pastelería es nuestro arte.</p>
+                </div>
+                
+                <!-- Valor 2 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Calidad</h3>
+                    <p>Usamos solo ingredientes naturales y de la más alta calidad. Nada de conservantes o colorantes artificiales.</p>
+                </div>
+                
+                <!-- Valor 3 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Tradición</h3>
+                    <p>Respetamos las recetas tradicionales mientras innovamos para crear experiencias únicas.</p>
+                </div>
+                
+                <!-- Valor 4 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Felicidad</h3>
+                    <p>Creemos que un buen postre puede alegrar el día a cualquiera. Ese es nuestro mayor objetivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Equipo -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Equipo</h2>
+                <p>Los talentosos pasteleros detrás de cada creación</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Miembro 1 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="María Fernández">
+                    </div>
+                    <div class="team-info">
+                        <h3>María Fernández</h3>
+                        <p>Fundadora & Pastelera Maestra</p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 2 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Gutiérrez">
+                    </div>
+                    <div class="team-info">
+                        <h3>Carlos Gutiérrez</h3>
+                        <p>Chef Repostero</p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 3 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lucía Mendoza">
+                    </div>
+                    <div class="team-info">
+                        <h3>Lucía Mendoza</h3>
+                        <p>Especialista en Decoración</p>
+                    </div>
+                </div>
+                
+                <!-- Miembro 4 -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Javier Ríos">
+                    </div>
+                    <div class="team-info">
+                        <h3>Javier Ríos</h3>
+                        <p>Maestro Heladero</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <a href="#" id="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">¡Escríbenos!</span>
+        </a>
+    </div>
+
+    <!-- WhatsApp Modal -->
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content whatsapp-form">
+            <span class="close-modal">&times;</span>
+            <h2>Contáctanos por WhatsApp</h2>
+            <form id="whatsapp-form">
+                <div class="form-group">
+                    <label for="whatsapp-name">Nombre:</label>
+                    <input type="text" id="whatsapp-name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-phone">Teléfono:</label>
+                    <input type="tel" id="whatsapp-phone" placeholder="Número de teléfono" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-message">Mensaje:</label>
+                    <textarea id="whatsapp-message" rows="4" placeholder="Hola, me gustaría información sobre..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp-product">Producto de interés (opcional):</label>
+                    <select id="whatsapp-product">
+                        <option value="">-- Selecciona un producto --</option>
+                        <option value="Helado de Lúcuma">Helado de Lúcuma</option>
+                        <option value="Torta de Lúcuma">Torta de Lúcuma</option>
+                        <option value="Cheesecake de Lúcuma">Cheesecake de Lúcuma</option>
+                    </select>
+                </div>
+                <button type="submit" class="whatsapp-send-btn">
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-column">
+                <h3>Glaze & Joy</h3>
+                <p>Pastelería artesanal con ingredientes peruanos de la más alta calidad.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index1.html">Productos</a></li>
+                    <li><a href="index2.html">Nosotros</a></li>
+                    <li><a href="index3.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Ticapampa, Perú</li>
+                    <li><i class="fas fa-phone"></i> +51 987 654 321</li>
+                    <li><i class="fas fa-envelope"></i> info@glazejoy.com</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Horario</h3>
+                <ul>
+                    <li>Lunes a Viernes: 9am - 8pm</li>
+                    <li>Sábados: 10am - 6pm</li>
+                    <li>Domingos: Cerrado</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Glaze & Joy. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu Toggle Functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            function toggleMenu() {
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                
+                // Toggle body scroll
+                if (mainNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Toggle menu on button click
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Close menu when clicking on a link (mobile only)
+            const navLinks = document.querySelectorAll('#mainNav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        toggleMenu();
+                    }
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (mainNav.classList.contains('active') && 
+                    !mainNav.contains(e.target) && 
+                    e.target !== menuToggle) {
+                    toggleMenu();
+                }
+            });
+            
+            // Close menu on window resize if it exceeds mobile breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+            
+            // WhatsApp Modal Functionality
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            const whatsappModal = document.getElementById('whatsapp-modal');
+            const closeModal = document.querySelector('.close-modal');
+            
+            whatsappBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                whatsappModal.style.display = 'flex';
+            });
+            
+            closeModal.addEventListener('click', function() {
+                whatsappModal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === whatsappModal) {
+                    whatsappModal.style.display = 'none';
+                }
+            });
+            
+            // Form submission (example)
+            const whatsappForm = document.getElementById('whatsapp-form');
+            whatsappForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('whatsapp-name').value;
+                const phone = document.getElementById('whatsapp-phone').value;
+                const message = document.getElementById('whatsapp-message').value;
+                const product = document.getElementById('whatsapp-product').value;
+                
+                // Here you would normally send the data to WhatsApp
+                // This is just a simulation
+                console.log('Enviando a WhatsApp:', {name, phone, message, product});
+                
+                // Show success message
+                alert(`Gracias ${name}, tu mensaje ha sido enviado. Nos pondremos en contacto contigo pronto.`);
+                
+                // Reset form and close modal
+                whatsappForm.reset();
+                whatsappModal.style.display = 'none';
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
